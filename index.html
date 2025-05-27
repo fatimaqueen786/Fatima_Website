@@ -9,93 +9,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
-    /* (Your entire existing CSS here — unchanged) */
-    /* I’ve skipped repeating CSS to save space, but keep your full CSS here as-is */
-  </style>
-</head>
-<body>
-  <div class="welcome-container">
-    <div class="welcome-message">Welcome Fatima</div>
-  </div>
-
-  <canvas id="rainCanvas"></canvas>
-
-  <div class="lock-screen">
-    <div class="name-animation">Fatima</div>
-    <div class="time" id="time">12:00</div>
-    <div class="date" id="date">Saturday, May 24</div>
-    <div class="message">Enter Passcode</div>
-    <div class="dots" id="dots">
-      <div class="dot" id="dot1"></div>
-      <div class="dot" id="dot2"></div>
-      <div class="dot" id="dot3"></div>
-      <div class="dot" id="dot4"></div>
-    </div>
-    <div class="keypad" id="keypad">
-      <button onclick="press(1)">1</button>
-      <button onclick="press(2)">2</button>
-      <button onclick="press(3)">3</button>
-      <button onclick="press(4)">4</button>
-      <button onclick="press(5)">5</button>
-      <button onclick="press(6)">6</button>
-      <button onclick="press(7)">7</button>
-      <button onclick="press(8)">8</button>
-      <button onclick="press(9)">9</button>
-      <div></div>
-      <button onclick="press(0)">0</button>
-      <button onclick="backspace()">←</button>
-    </div>
-  </div>
-
-  <div class="footer-text">
-    <p class="line1">🌸My sister is the best sister in the whole world.</p>
-    <p class="line2">No one can ever have a sister like mine🌸</p>
-  </div>
-
-  <button class="music-button" id="musicBtn" onclick="toggleMusic()">
-    <i class="fas fa-play"></i> Play Music
-  </button>
-
-  <audio id="bg-music" loop></audio>
-
-  <script>
-    const music = document.getElementById('bg-music');
-    music.src = 'https://raw.githubusercontent.com/sahilpakistan/Fatimasis/main/Fatima_Sahil_4.mp3';
-
-    const rainCanvas = document.getElementById('rainCanvas');
-    const rainCtx = rainCanvas.getContext('2d');
-    rainCanvas.width = window.innerWidth;
-    rainCanvas.height = window.innerHeight;
-
-    const drops = [];
-    for (let i = 0; i < 100; i++) {
-      drops.push({
-        x: Math.random() * rainCanvas.width,
-        y: Math.random() * rainCanvas.height,
-        speed: Math.random() * 5 + 2,
-        length: Math.random() * 20 + 10
-      });
-    }
-
-    function drawRain() {
-      rainCtx.clearRect(0, 0, rainCanvas.width, rainCanvas.height);
-      rainCtx.strokeStyle = 'rgba(255, 255, 255, 0.5)';
-      rainCtx.lineWidth = 1;
-
-      drops.forEach(drop => {
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Fatima's Premium Lock Screen</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <style>
-    /* (Your entire existing CSS here — unchanged) */
-    /* I’ve skipped repeating CSS to save space, but keep your full CSS here as-is */
+    /* Your full CSS goes here (not repeated here for space) */
   </style>
 </head>
 <body>
@@ -210,7 +124,6 @@
         document.querySelector('.welcome-message').textContent = 'Access Granted!';
         document.querySelector('.welcome-message').style.color = '#4ecdc4';
 
-        // Redirect to home.html after 5 seconds
         setTimeout(() => {
           window.location.href = 'home.html';
         }, 5000);
@@ -246,55 +159,4 @@
     });
   </script>
 </body>
-</html>￼Enter        rainCtx.beginPath();
-        rainCtx.moveTo(drop.x, drop.y);
-        rainCtx.lineTo(drop.x, drop.y + drop.length);
-        rainCtx.stroke();
-
-        drop.y += drop.speed;
-        if (drop.y > rainCanvas.height) {
-          drop.y = -drop.length;
-          drop.x = Math.random() * rainCanvas.width;
-        }
-      });
-
-      requestAnimationFrame(drawRain);
-    }
-
-    let input = '';
-    const correctPass = '3892';
-
-    function press(num) {
-      if (input.length < 4) {
-        input += num;
-        updateDots();
-      }
-      if (input.length === 4) checkPassword();
-    }
-
-nction backspace() {
-      input = input.slice(0, -1);
-      updateDots();
-    }
-
-    function updateDots() {
-      for (let i = 1; i <= 4; i++) {
-        document.getElementById('dot' + i).classList.toggle('filled', i <= input.length);
-      }
-    }
-
-    function checkPassword() {
-      if (input === correctPass) {
-        document.querySelector('.welcome-message').textContent = 'Access Granted!';
-        document.querySelector('.welcome-message').style.color = '#4ecdc4';
-
-        // Redirect to home.html after 5 seconds
-        setTimeout(() => {
-          window.location.href = 'home.html';
-        }, 5000);
-      } else {
-        input = '';
-        updateDots();
-      }
-    }
-
+</html>
